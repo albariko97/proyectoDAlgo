@@ -22,7 +22,7 @@ public class ProblemaC {
 			int n = 0;
 			int k = 0;	
 			int numeroLineas = 0;
-			
+
 			while(linea!=null && linea.length()>0) {
 
 				String [] condiciones = linea.split(" ");
@@ -85,11 +85,11 @@ public class ProblemaC {
 		for( int i=0 ; i< pN ; i++ ) {
 			rta2[i]="";
 		}
-		
+
 		int j = 0;
-		
+
 		int c = 0;
-		
+
 		for( int i=1 ; i< pN+1 ; i++ ) {
 			for (j = c; j < (i*pK); j++) {
 				rta2[i-1] += cad2[j];	
@@ -101,7 +101,7 @@ public class ProblemaC {
 		for(int n=0; n< validar.length; n++) {
 			validar[n] = cad2[n];
 		}
-		
+
 		int k = cad2.length-1;
 		int i = 0;
 		while (i < k) {
@@ -116,7 +116,7 @@ public class ProblemaC {
 				for(String letra: validar) {	
 					cadena += letra;
 				}
-				
+
 				int r = 0;
 				for(int m=0; m < pN ; m++ ) {
 					if(!cadena.contains(rta2[m])) {
@@ -124,7 +124,7 @@ public class ProblemaC {
 						r=m;
 					}
 				}
-				
+
 				if(r == pN) {	
 					for(int n=0; n < validar.length; n++) {
 						cad2[n] = validar[n];
@@ -149,13 +149,14 @@ public class ProblemaC {
 				contar++;
 		}
 		k = pK;
+
 		for (i = k; i > 0; i--) {
 			for(int p=0; p <= contar-i; p++) {
-				
+
 				String maximaCadena = "";
 				String minimaCadena = "";
 				for(j = p; j < contar; j++) {	
-					
+
 					if(j == p) {
 						for (int q = 0; q < p; q++) {
 							maximaCadena += validar[q];
@@ -168,6 +169,7 @@ public class ProblemaC {
 						maximaCadena += validar[j];
 					}
 				}
+
 				if(maximaCadena.contains(minimaCadena)) {
 					int m=0;
 					for(; m < pN ; m++ ) {
@@ -194,18 +196,17 @@ public class ProblemaC {
 		for(int n=0; n < cad2.length; n++) {
 			validar[n] =  cad2[n];
 		}
+
 		int cantidadLetras = 1;
 		String cambia = "";
-		while(cantidadLetras<contar)
-		{
+		while(cantidadLetras<contar) {
 			cambia = "";
-			for(i = contar - 1; i>=cantidadLetras; i-- )
-			{
-				if(cambia.equalsIgnoreCase(""))
-				{
+
+			for(i = contar - 1; i>=cantidadLetras; i-- ) {
+				if(cambia.equalsIgnoreCase("")) {
 					k=i;
-					for (j = 0; j < cantidadLetras; j++)
-					{
+
+					for (j = 0; j < cantidadLetras; j++){
 						cambia += cad2[k+1-cantidadLetras];
 						k++;
 					}
@@ -214,6 +215,7 @@ public class ProblemaC {
 				validar[i] = cad2[k];
 				k--;
 			}
+
 			for(int n=0; n < cambia.length(); n++) {
 				validar[n] = cambia.substring(n, n + 1);
 			}
@@ -222,6 +224,7 @@ public class ProblemaC {
 			for(String letra: validar) {	
 				cadena += letra;
 			}
+
 			int m=0;
 			for(; m < pN ; m++ ) {
 				if(!cadena.contains(rta2[m]))
@@ -276,21 +279,17 @@ public class ProblemaC {
 				}
 				cantidadLetras++;
 			}
-			else
-			{
+			else {
 				for(int n=0; n < contar; n++) {
 					validar[n] =  cad2[n];
 				}
 				cantidadLetras++;
 			}			
 		}
-
 		System.out.println("");
-		for(i = 0; i < contar; i++)
-		{
+		for(i = 0; i < contar; i++) {
 			System.out.print(cad2[i]);
 		}
-
 		return cadenaFinal;
 	}
 }
