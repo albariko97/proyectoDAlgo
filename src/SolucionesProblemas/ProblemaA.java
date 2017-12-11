@@ -58,7 +58,7 @@ public class ProblemaA {
 		double resultado = 0;
 		double[] r = new double[n+1];
 
-		for (int i = 0; i <= n+1; i++)
+		for (int i = 0; i <= n; i++)
 		{
 			if(i < 2)
 			{
@@ -72,15 +72,20 @@ public class ProblemaA {
 				}
 
 			}
-			else
+			else if (i >= 2)
 			{
+		
 				r[i] = a[2]*r[i-2] + a[3]*r[i-1]; 
 			}			
 		}
 
-		for (int i = 0; i < n+1; i ++)
+		for (int i = 0; i <= n; i ++)
 		{
-			resultado = r[i]*r[n-i];
+		
+			resultado +=  r[i]*r[n-i];
+		
+			System.out.println("-------------------");
+			System.out.println("-------  "+  resultado  +"   -------");
 		}
 
 
