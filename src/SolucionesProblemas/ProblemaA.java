@@ -28,7 +28,7 @@ public class ProblemaA {
 		int resultado = 0;
 		Integer[] r = new Integer[n+1];
 		
-		for (int i = 0; i < n+1; i++)
+		for (int i = 0; i <= n+1; i++)
 		{
 			if(i < 2)
 			{
