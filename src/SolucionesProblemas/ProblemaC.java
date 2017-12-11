@@ -59,6 +59,7 @@ public class ProblemaC {
 						}						
 					}
 				}
+				System.out.println("Cadena recuperada");
 				String cadenaFinal = prob.minimal(n, k, letras);
 				System.out.println(cadenaFinal);
 				n = 0; k = 0;				
@@ -149,43 +150,41 @@ public class ProblemaC {
 		}
 		k = pK;
 		for (i = k; i > 0; i--) {
-			for(int p=0; p <= contar-i; p++)
-			{
-				String cadenaMin = "";
-				String cadenaMax = "";
-				for(j = p; j < contar; j++)
-				{	
-					if(j==p)
-					{
+			for(int p=0; p <= contar-i; p++) {
+				
+				String maximaCadena = "";
+				String minimaCadena = "";
+				for(j = p; j < contar; j++) {	
+					
+					if(j == p) {
 						for (int q = 0; q < p; q++) {
-							cadenaMax += validar[q];
+							maximaCadena += validar[q];
 						}
 					}
-					if(j<i+p)
-						cadenaMin += validar[j];
-					else
-						cadenaMax += validar[j];
+					if(j < i+p) {
+						minimaCadena += validar[j];
+					}
+					else {
+						maximaCadena += validar[j];
+					}
 				}
-				if(cadenaMax.contains(cadenaMin))
-				{
+				if(maximaCadena.contains(minimaCadena)) {
 					int m=0;
-					for(; m < pN ; m++ )
-					{
-						if(!cadenaMax.contains(rta2[m]))
+					for(; m < pN ; m++ ) {
+						if(!maximaCadena.contains(rta2[m]))
 						{
 							m = pN + 1;
 						}
 					}
-					if(m == pN)
-					{	
+					if(m == pN) {	
 						int n=0;
-						for(; n < cadenaMax.length(); n++) {
-							cad2[n] = cadenaMax.substring(n, n + 1);
-							validar[n] = cadenaMax.substring(n, n + 1);
+						for(; n < maximaCadena.length(); n++) {
+							cad2[n] = maximaCadena.substring(n, n + 1);
+							validar[n] = maximaCadena.substring(n, n + 1);
 						}
 						cad2[n] = "";
 						validar[n] = "";
-						contar = cadenaMax.length();
+						contar = maximaCadena.length();
 						p=-1;
 					}
 				}
@@ -195,22 +194,22 @@ public class ProblemaC {
 		for(int n=0; n < cad2.length; n++) {
 			validar[n] =  cad2[n];
 		}
-		int tomaLetras = 1;
+		int cantidadLetras = 1;
 		String cambia = "";
-		while(tomaLetras<contar)
+		while(cantidadLetras<contar)
 		{
 			cambia = "";
-			for(i = contar - 1; i>=tomaLetras; i-- )
+			for(i = contar - 1; i>=cantidadLetras; i-- )
 			{
 				if(cambia.equalsIgnoreCase(""))
 				{
 					k=i;
-					for (j = 0; j < tomaLetras; j++)
+					for (j = 0; j < cantidadLetras; j++)
 					{
-						cambia += cad2[k+1-tomaLetras];
+						cambia += cad2[k+1-cantidadLetras];
 						k++;
 					}
-					k=i-tomaLetras;
+					k=i-cantidadLetras;
 				}
 				validar[i] = cad2[k];
 				k--;
@@ -220,55 +219,48 @@ public class ProblemaC {
 			}
 
 			String cadena = "";
-			for(String letra: validar)
-			{	
+			for(String letra: validar) {	
 				cadena += letra;
 			}
 			int m=0;
-			for(; m < pN ; m++ )
-			{
+			for(; m < pN ; m++ ) {
 				if(!cadena.contains(rta2[m]))
 				{
 					m = pN + 1;
 				}
 			}
-			if(m == pN)
-			{	
+			if(m == pN) {	
 				for(int n=0; n < validar.length; n++) {
 					cad2[n] = validar[n];
 				}
 
 				k = pK;
 				for (i = k; i > 0; i--) {
-					for(int p=0; p <= contar-i; p++)
-					{
-						String cadenaMin = "";
+					for(int p=0; p <= contar-i; p++) {
 						String cadenaMax = "";
+						String cadenaMin = "";
 						for(j = p; j < contar; j++)
 						{	
-							if(j==p)
-							{
+							if(j==p) {
 								for (int q = 0; q < p; q++) {
 									cadenaMax += validar[q];
 								}
 							}
-							if(j<i+p)
+							if(j<i+p) {
 								cadenaMin += validar[j];
-							else
+							}
+							else {
 								cadenaMax += validar[j];
+							}
 						}
-						if(cadenaMax.contains(cadenaMin))
-						{
+						if(cadenaMax.contains(cadenaMin)) {
 							m=0;
-							for(; m < pN ; m++ )
-							{
-								if(!cadenaMax.contains(rta2[m]))
-								{
+							for(; m < pN ; m++ ) {
+								if(!cadenaMax.contains(rta2[m])) {
 									m = pN + 1;
 								}
 							}
-							if(m == pN)
-							{	
+							if(m == pN) {	
 								int n=0;
 								for(; n < cadenaMax.length(); n++) {
 									cad2[n] = cadenaMax.substring(n, n + 1);
@@ -282,14 +274,14 @@ public class ProblemaC {
 						}
 					}
 				}
-				tomaLetras++;
+				cantidadLetras++;
 			}
 			else
 			{
 				for(int n=0; n < contar; n++) {
 					validar[n] =  cad2[n];
 				}
-				tomaLetras++;
+				cantidadLetras++;
 			}			
 		}
 
